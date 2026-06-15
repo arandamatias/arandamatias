@@ -66,22 +66,6 @@
   </div>
 </footer>
 
-<div id="debug" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#0f0;font-size:11px;padding:8px;z-index:99999;word-break:break-all;font-family:monospace;"></div>
-<script>
-  window.onerror = function(msg, url, line, col, err) {
-    document.getElementById('debug').textContent = 'JS ERROR: ' + msg + ' @ line ' + line + ':' + col;
-  };
-  document.addEventListener('DOMContentLoaded', function(){
-    var thumbs = document.querySelectorAll('.thumb, .frame');
-    document.getElementById('debug').textContent = 'Thumbs encontrados: ' + thumbs.length;
-    thumbs.forEach(function(t, i){
-      t.addEventListener('click', function(){
-        document.getElementById('debug').textContent = 'CLICK detectado en thumb ' + i;
-      });
-    });
-  });
-</script>
-
 <script src="js/main.js"></script>
 </body>
 </html>
