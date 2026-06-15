@@ -108,18 +108,12 @@ if (galleryImages.length) {
     updateLightbox();
   }
 
+  // Un solo listener por thumb. iOS Safari (incluyendo iOS 15) dispara
+  // 'click' de forma fiable tras un tap; no hace falta duplicar con
+  // touchend, y combinar ambos con preventDefault es lo que rompía el
+  // toque en iPhones viejos.
   galleryThumbs.forEach((thumb, index) => {
-    let touchHandled = false;
-
-    thumb.addEventListener('touchend', (e) => {
-      touchHandled = true;
-      e.preventDefault();
-      openLightbox(index);
-      setTimeout(() => { touchHandled = false; }, 400);
-    });
-
     thumb.addEventListener('click', (e) => {
-      if (touchHandled) return;
       e.preventDefault();
       openLightbox(index);
     });
