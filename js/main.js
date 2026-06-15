@@ -109,7 +109,17 @@ if (galleryImages.length) {
   }
 
   galleryThumbs.forEach((thumb, index) => {
+    let touchHandled = false;
+
+    thumb.addEventListener('touchend', (e) => {
+      touchHandled = true;
+      e.preventDefault();
+      openLightbox(index);
+      setTimeout(() => { touchHandled = false; }, 400);
+    });
+
     thumb.addEventListener('click', (e) => {
+      if (touchHandled) return;
       e.preventDefault();
       openLightbox(index);
     });
@@ -130,4 +140,3 @@ if (galleryImages.length) {
     if (e.key === 'ArrowLeft') showPrev();
   });
 }
-
