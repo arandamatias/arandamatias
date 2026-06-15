@@ -130,3 +130,4 @@ if (galleryImages.length) {
     if (e.key === 'ArrowLeft') showPrev();
   });
 }
+
